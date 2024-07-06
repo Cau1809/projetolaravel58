@@ -9,11 +9,13 @@ class CandidatoController extends Controller
 {
     public function index()
     {
-        // Pega todos os candidatos do banco de dados
         $candidatos = Candidato::all();
-
-        // Retorna a visão com a lista de candidatos
         return view('candidatos.index', compact('candidatos'));
+    }
+
+    public function create()
+    {
+        return view('candidatos.create');
     }
 
     public function store(Request $request)
@@ -27,7 +29,41 @@ class CandidatoController extends Controller
         ]);
 
         Candidato::create($validatedData);
+        return redirect()->route('candidatos.index')->with('success', 'Candidato criado com sucesso!');
+    }
 
-        return redirect()->back()->with('success', 'Candidato criado com sucesso!');
+    public function show($id)
+    {
+        $candidato = Candidato::findOrFail($id);
+        return view('candidatos.show', compact('candidato'));
+    }
+
+    public function edit($id)
+    {
+        $candidato = Candidato::findOrFail($id);
+        return view('candidatos.edit', compact('candidato'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'idade' => 'required|integer',
+            'sexo' => 'required|string',
+            'escolaridade' => 'required|string',
+            'cor_favorita' => 'required|string'
+        ]);
+
+        $candidato = Candidato::findOrFail($id);
+        $candidato->update($validatedData);
+        return redirect()->route('candidatos.index')->with('success', 'Candidato atualizado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $candidato = Candidato::findOrFail($id);
+        $candidato->delete();
+        return redirect()->route('candidatos.index')->with('success', 'Candidato excluído com sucesso!');
     }
 }
+
