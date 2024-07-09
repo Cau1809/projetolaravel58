@@ -25,10 +25,16 @@
                                     <option value="F">Feminino</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="escolaridade">Escolaridade:</label>
-                                <input type="text" name="escolaridade" id="escolaridade" class="form-control">
-                            </div>
+                         <div class="form-group">
+                            <label for="escolaridade">Escolaridade:</label>
+                            <select class="form-control" name="escolaridade" required>
+                                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                                <option value="Ensino Médio">Ensino Médio</option>
+                                <option value="Ensino Superior">Ensino Superior</option>
+                                <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+                          </select>
+                     </div>
+
                             <div class="form-group">
                                 <label for="cor_favorita">Cor Favorita:</label>
                                 <select name="cor_favorita" id="cor_favorita" class="form-control">
