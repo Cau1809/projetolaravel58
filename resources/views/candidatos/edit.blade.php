@@ -34,9 +34,15 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="escolaridade">Escolaridade:</label>
-            <input type="text" class="form-control" name="escolaridade" value="{{ $candidato->escolaridade }}" required>
-        </div>
+    <label for="escolaridade">Escolaridade:</label>
+    <select class="form-control" name="escolaridade" required>
+        <option value="Ensino Fundamental" {{ $candidato->escolaridade == 'Ensino Fundamental' ? 'selected' : '' }}>Ensino Fundamental</option>
+        <option value="Ensino Médio" {{ $candidato->escolaridade == 'Ensino Médio' ? 'selected' : '' }}>Ensino Médio</option>
+        <option value="Ensino Superior" {{ $candidato->escolaridade == 'Ensino Superior' ? 'selected' : '' }}>Ensino Superior</option>
+        <option value="Ensino Superior Incompleto" {{ $candidato->escolaridade == 'Ensino Superior Incompleto' ? 'selected' : '' }}>Ensino Superior Incompleto</option>
+    </select>
+</div>
+
         <div class="form-group">
             <label for="cor_favorita">Cor Favorita:</label>
             <select class="form-control" name="cor_favorita" required>

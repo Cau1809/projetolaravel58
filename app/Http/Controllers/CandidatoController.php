@@ -21,11 +21,11 @@ class CandidatoController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nome' => 'required|string|max:255',
-            'idade' => 'required|integer',
-            'sexo' => 'required|string',
-            'escolaridade' => 'required|string',
-            'cor_favorita' => 'required|string'
+           'nome' => 'required|string|max:255',
+        'idade' => 'required|integer',
+        'sexo' => 'required|string',
+        'escolaridade' => 'required|string|in:Ensino Fundamental,Ensino Médio,Ensino Superior,Ensino Superior Incompleto',
+        'cor_favorita' => 'required|string'
         ]);
 
         Candidato::create($validatedData);
@@ -48,10 +48,10 @@ class CandidatoController extends Controller
     {
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
-            'idade' => 'required|integer',
-            'sexo' => 'required|string',
-            'escolaridade' => 'required|string',
-            'cor_favorita' => 'required|string'
+        'idade' => 'required|integer',
+        'sexo' => 'required|string',
+        'escolaridade' => 'required|string|in:Ensino Fundamental,Ensino Médio,Ensino Superior,Ensino Superior Incompleto',
+        'cor_favorita' => 'required|string'
         ]);
 
         $candidato = Candidato::findOrFail($id);
